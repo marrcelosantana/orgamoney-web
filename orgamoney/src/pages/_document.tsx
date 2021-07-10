@@ -5,9 +5,8 @@ export default class MyDocument extends Document {
         return (
             <Html>
                 <Head>
-                    <title>OrgaMoney</title> 
+                    <link rel="shortcut icon" href="../../public/images/logoReduzida.svg" type = "image/png"/>
                 </Head>
-
                 <body>
                     <Main />
                     <NextScript />

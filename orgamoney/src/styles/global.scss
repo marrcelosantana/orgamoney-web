@@ -13,6 +13,13 @@
     --green-omni: #5fcc6f;
     --yellow-omni: #dad37d;
     --pink-omni:#ff79c6;
+    --green-spotify: #1ed760;
+
+    //OrgaMoney colors:
+    --orga-orange: #EFB554;
+    --orga-gray: #29363F;
+    --orga-green: #32B447;
+
 }
 
 @media (max-width: 1080px){
@@ -44,6 +51,7 @@ button{
 a{
     color: inherit;
     text-decoration: none;
+    cursor: pointer;
 }
 
 ul{
