@@ -3,7 +3,6 @@ import styles from './home.module.scss';
 import { FiLogIn } from 'react-icons/fi';
 import Link from 'next/link';
 
-
 export default function Home() {
   return (
     <>
