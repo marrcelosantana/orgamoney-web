@@ -1,4 +1,4 @@
-.container{
+.register{
     background-color: var(--orga-gray);
     height: 100vh;
     max-width: 100%;
@@ -79,7 +79,7 @@
                }
             }
 
-           .options{
+           .options{               
                a{
                 color: var(--orga-orange);
                 font-weight: bold;
@@ -89,11 +89,14 @@
                     color: var(--orga-green);
                 }
 
+                .backIcon{
+                    margin-right: 5px;
+                }
+
                }
            }
            
         }
         
     }
-
 }
