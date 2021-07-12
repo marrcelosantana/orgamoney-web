@@ -12,7 +12,7 @@ export default function Register() {
       </Head>
       <div className={ styles.centerContainer }>
         <div className={ styles.logoArea }>
-          <img src="images/logo.png" alt="logo" className={styles.logo} />
+          <img src="images/logo.png" alt="logo" className={ styles.logo } />
         </div>
         <div className={ styles.menuLogin }>
           <form className={ styles.form }>
