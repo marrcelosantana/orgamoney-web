@@ -3,6 +3,7 @@ import styles from "./register.module.scss";
 import { FiLogIn } from "react-icons/fi";
 import { TiArrowBackOutline } from "react-icons/ti";
 import Link from "next/link";
+import { InitialLogo } from "../../components/InitialLogo";
 
 export default function Register() {
   return (
@@ -12,7 +13,7 @@ export default function Register() {
       </Head>
       <div className={ styles.centerContainer }>
         <div className={ styles.logoArea }>
-          <img src="images/logo.png" alt="logo" className={ styles.logo } />
+          <InitialLogo />
         </div>
         <div className={ styles.menuLogin }>
           <form className={ styles.form }>
