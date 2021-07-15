@@ -8,8 +8,8 @@ export default function Main(){
       <Head>
         <title>Início | OrgaMoney</title>
       </Head>
-      <Header/>
       <div className={ styles.container }>
+        <Header/>
         <p>Olá mundo</p>
       </div>
     </>
