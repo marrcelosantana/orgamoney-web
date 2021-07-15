@@ -23,10 +23,12 @@ export default function Register() {
               <input type="email" placeholder="Email@address.com" />
               <input type="password" placeholder="Senha" />
             </div>
-            <button className={ styles.buttonConnect }>
-              <FiLogIn className={ styles.loginIcon }></FiLogIn>
-              CADASTRAR
-            </button>
+            <Link href="/Main">
+              <button className={ styles.buttonConnect }>
+                <FiLogIn className={ styles.loginIcon }></FiLogIn>
+                CADASTRAR
+              </button>
+            </Link>
             <div className={ styles.options }>
               <Link href="/">
                 <a>

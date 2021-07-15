@@ -22,10 +22,12 @@ export default function Home() {
                     <input type="email" placeholder="Email@address.com"/>
                     <input type="password" placeholder="Senha"/>
                   </div>
-                  <button className = { styles.buttonConnect }>
-                    <FiLogIn className={ styles.loginIcon }></FiLogIn>
-                    CONECTAR
-                  </button>
+                  <Link href="/Main">
+                    <button className = { styles.buttonConnect }>
+                      <FiLogIn className={ styles.loginIcon }></FiLogIn>
+                      CONECTAR
+                    </button>
+                  </Link>
                   <div className = { styles.options }>
                     <Link href = "/Register">
                       <a>Cadastre-se agora!</a>
