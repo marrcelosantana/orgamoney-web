@@ -1,5 +1,9 @@
 .container{
+  width: 100%;
+  max-width: 100%;
+  
   .header{
+    width: 100%;
     color: var(--orga-orange);
     font-family: rajdhani, sans-serif;
     font-weight: bold;
@@ -12,11 +16,12 @@
   }
 
   .menu{
-    margin-top: 4rem;
+    width: 100%;
+    height: 17vw;
     display: flex;
     align-items: center;
     justify-content: center;
-
+    
     input{
       text-align: center;
       border-radius: 5px;
@@ -37,21 +42,29 @@
 
     .title{
       input{
-        width: 20rem;    
+        width: 100%;    
       }
+      margin-bottom: 1rem;
     }
 
     .miniInputs{
       input{
-        width: 10rem;
+        width: 100%;
       }
+      margin: 1rem 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
     }
 
     .optionButtons{
-      display: flex;
+      margin: 1rem 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
 
       button{
-        width: 10rem;
+        width: 100%;
         height: 2rem;
         border-radius: 5px;
         border: 0;
@@ -87,7 +100,7 @@
     .category{
       select{
         text-align-last: center;
-        width: 20rem;
+        width: 100%;
         height: 2rem;
         background: none;
         color: var(--orga-orange);
@@ -97,12 +110,13 @@
         border-color: var(--orga-green);
         border-style: groove;
         border-radius: 5px;
+        margin-bottom: 1rem;
       }
     }
 
     .registerButton{
       button{
-        width: 20rem;
+        width: 100%;
         height: 3rem;
         border-radius: 8px;
         border: 0;
