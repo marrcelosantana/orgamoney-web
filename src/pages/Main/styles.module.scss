@@ -1,4 +1,53 @@
 .container{
   height: 100vh;
   background-color: var(--orga-gray);
+
+  .content{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+    gap: 2rem;
+    padding: 0 15rem 0 15rem;
+    height: 80%;
+
+    .leftContent{
+      border: 2px;
+      border-style: groove;
+      border-color: var(--orga-green);
+      width: 50%;
+
+      .date{
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .registeredData{
+        margin-top: 2rem;
+        display: flex;
+        justify-content: center;
+      }
+    }
+  
+    .rightContent{
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      
+      .registerTransaction{
+        border: 2px;
+        border-style: groove;
+        border-color: var(--orga-green);
+        height: 50%;
+      }
+
+      .graphics{
+        border: 2px;
+        border-style: groove;
+        border-color: var(--orga-green);
+        height: 50%;
+      }
+    }
+  }
+
 }

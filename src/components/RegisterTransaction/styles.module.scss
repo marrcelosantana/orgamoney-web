@@ -1,0 +1,124 @@
+.container{
+  .header{
+    color: var(--orga-orange);
+    font-family: rajdhani, sans-serif;
+    font-weight: bold;
+    font-size: 1.3rem;
+    background: var(--black-omni);
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu{
+    margin-top: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    input{
+      text-align: center;
+      border-radius: 5px;
+      height: 2rem;
+      border: 2px;
+      border-color: var(--orga-green);
+      border-style: groove;
+      font-weight: bold;
+      font-family: rajdhani;
+      background: none;
+      color: var(--orga-orange);
+    }
+    
+    ::-webkit-input-placeholder {
+      color: var(--orga-orange);
+      filter: opacity(0.35);
+    }
+
+    .title{
+      input{
+        width: 20rem;    
+      }
+    }
+
+    .miniInputs{
+      input{
+        width: 10rem;
+      }
+    }
+
+    .optionButtons{
+      display: flex;
+
+      button{
+        width: 10rem;
+        height: 2rem;
+        border-radius: 5px;
+        border: 0;
+        font-weight: bold;
+        font-family: rajdhani;
+      }
+
+      .depositButton{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img{
+          width: 20px;
+          height: 20px;
+          margin-left: 2px;
+        }
+      }
+      .withdrawButton{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img{
+          width: 20px;
+          height: 20px;
+          margin-left: 2px;
+        }
+      }
+
+    }
+
+    .category{
+      select{
+        text-align-last: center;
+        width: 20rem;
+        height: 2rem;
+        background: none;
+        color: var(--orga-orange);
+        font-family: rajdhani, sans-serif;
+        font-weight: bold;
+        border: 2px;
+        border-color: var(--orga-green);
+        border-style: groove;
+        border-radius: 5px;
+      }
+    }
+
+    .registerButton{
+      button{
+        width: 20rem;
+        height: 3rem;
+        border-radius: 8px;
+        border: 0;
+        background-color: var(--orga-orange);
+        font-weight: bold;
+        font-family: rajdhani, sans-serif;
+        font-size: 1.5rem;
+
+        transition: 0.2ms;
+
+        &:hover{
+          background-color: var(--orga-green);
+          color: white;
+        }
+
+      }
+    }
+  }
+}
