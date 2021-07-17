@@ -2,6 +2,7 @@ import styles from "./styles.module.scss";
 import Header from "../../components/Header";
 import Head from "next/head";
 import RegisterTransaction from "../../components/RegisterTransaction";
+import Graphics from "../../components/Graphics";
 
 export default function Main() {
   return (
@@ -32,7 +33,7 @@ export default function Main() {
               <RegisterTransaction />
             </div>
             <div className = { styles.graphics }>
-              <p>Componente de Gráfico</p>
+              <Graphics />
             </div>
           </div>
         </div>
