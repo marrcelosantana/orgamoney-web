@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+html, body{
+    height: 100%;
+}
+
 :root{
     --white-ice: #e2e2e2;
     --purple:#6c63ff;

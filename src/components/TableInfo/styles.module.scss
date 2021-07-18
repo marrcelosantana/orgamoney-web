@@ -1,0 +1,31 @@
+.container{
+  margin-top: 0.5rem;
+  table{
+    width: 100%;
+    color: var(--orga-orange);
+    text-align: center;
+    font-family: rajdhani, sans-serif;
+
+    .tHead{
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+
+    .tBody{
+      .valueWithdraw{
+        color: red;
+      }
+
+      .valueDeposit{
+        color: var(--orga-green);
+      }
+
+      .icons{
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+      }
+
+    }
+  }
+}

@@ -12,7 +12,49 @@
     height: 2.5rem;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 0 1rem 0 1rem;
+
+    .date{
+      display: flex;
+      gap: 0.5rem;
+      select{
+        background: none;
+        border: 0;
+        color: var(--orga-orange);
+        font-family: rajdhani, sans-serif;
+        font-weight: bold;
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+  .footer{
+    width: 100%;
+    height: 2.5rem;
+    background-color: var(--black-omni);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--orga-orange);
+    font-weight: bold;
+    font-family: rajdhani, sans-serif;
+    padding: 0.5rem;
+
+    .info{
+      display: flex;
+      width: 50%;
+      justify-content: space-between;
+
+      .deposit{
+        color: var(--orga-green);
+      }
+
+      .withdraw{
+        color: red;
+      }
+    }
+    
   }
 
 }
