@@ -9,11 +9,11 @@ export default function RegisterTransaction(){
       <div className = { styles.menu }>
         <form className = { styles.formulary }>
             <div className = { styles.title }>
-              <input type="text"  placeholder="Título"/>
+              <input type="text"  placeholder="Título" required/>
             </div>
             <div className = { styles.miniInputs }>
-              <input type="number"  placeholder="Valor"/>
-              <input type="date" name="date" id="date"/>
+              <input type="number"  placeholder="Valor" required/>
+              <input type="date" name="date" id="date" required/>
             </div>
             <div className = { styles.optionButtons }>
               <button className= { styles.depositButton }>
@@ -26,8 +26,10 @@ export default function RegisterTransaction(){
               </button>
             </div>
             <div className = { styles.category }>
-              <select name="categorys" id="categorys">
-                <option value="1">Categorias</option>
+              <select name="categorys" id="categorys" required>
+                <option value="1" disabled selected>Escolha uma categoria</option>
+                <option value="2">Categorias de Entrada</option>
+                <option value="3">Categorias de Saída</option>
               </select>
             </div>
             <div className= { styles.registerButton }>
