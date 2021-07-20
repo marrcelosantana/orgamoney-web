@@ -22,7 +22,7 @@ export default function RegisteredData() {
       <div className = { styles.content }>
           <TableInfo />
       </div>
-      {/* <footer className = { styles.footer }>
+      <footer className = { styles.footer }>
         <div className = { styles.info }>
           <label>ENTRADAS: <span className = { styles.deposit }>R$3000,00</span></label>
           <label>SAÍDA: <span className = { styles.withdraw }>R$2000,00</span></label>
@@ -30,7 +30,7 @@ export default function RegisteredData() {
         <div className = { styles.total }>
           <span>TOTAL: +R$1000,00</span>
         </div>
-      </footer> */}
+      </footer>
     </div>
   ); 
 }

@@ -1,10 +1,10 @@
 .container{
   background-color: var(--black-omni);
-  height: 5rem;
+  height: 3rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 2rem 0 2rem;
+  padding: 0 10% 0 10%;
   width: 100%;
 
   .logo{
@@ -13,20 +13,19 @@
     align-items: center;
     justify-content: space-between;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 2rem;
     font-family: rajdhani, sans-serif;
     gap: 10px;
 
     img{
-      width: 40px;
-      height: 40px;
+      height: 2.5rem;
     }
   }
 
   .options{
     color: var(--orga-orange);
     font-weight: bold;
-    font-size: 30px;
+    font-size: 2rem;
     font-family: rajdhani, sans-serif;
     a{
       display: flex;
