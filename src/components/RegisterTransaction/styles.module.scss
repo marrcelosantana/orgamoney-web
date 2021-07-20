@@ -1,6 +1,9 @@
 .container{
   width: 100%;
   max-width: 100%;
+  border: 2px;
+  border-style: groove;
+  border-color: var(--orga-green);
   
   .header{
     width: 100%;
@@ -16,8 +19,8 @@
   }
 
   .menu{
-    width: 100%;
-    height: 17vw;
+    padding: 2%;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -141,5 +144,8 @@
 
       }
     }
+  }
+  @media(max-width: 720px){
+    margin-bottom: 50%;
   }
 }
