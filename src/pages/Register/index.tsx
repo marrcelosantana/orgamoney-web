@@ -18,7 +18,7 @@ export default function Register() {
         <div className={ styles.menuLogin }>
           <form className={ styles.form }>
             <h3>CADASTRO</h3>
-            <div className={styles.inputs}>
+            <div className={ styles.inputs }>
               <input type="text" placeholder="Seu Nome" />
               <input type="email" placeholder="Email@address.com" />
               <input type="password" placeholder="Senha" />

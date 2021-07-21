@@ -1,6 +1,5 @@
 import Category from "./category";
 import Year from "./year";
-
 export default class User {
   id: string;
   name: string;
