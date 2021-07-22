@@ -23,8 +23,7 @@ export default function Register() {
     
     try{
       const response = await api.post('/user', data);
-      alert(`Seu ID de acesso: ${ response.data }`)
-      console.log(response);
+      history.push('/');
       
     }catch(err){
       alert('Erro no cadastro, tente novamente!');
