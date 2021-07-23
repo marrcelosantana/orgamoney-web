@@ -9,7 +9,6 @@ import { useRouter } from "next/router";
 import toast from 'react-hot-toast';
 import { useUserContext } from '../contexts/UserContext';
 
-
 export default function Home() {
   const { handleSetUser } = useUserContext();
   const [login, setLogin] = useState('');
@@ -42,7 +41,7 @@ export default function Home() {
                 <form className = { styles.form } onSubmit = { handleLogin }>
                   <h3>LOGIN</h3>
                   <div className = { styles.inputs }>
-                    <input type="email" placeholder="Email@address.com" value = { login } onChange = { e => setLogin(e.target.value) }/>
+                    <input type="text" placeholder="Email@address.com" value = { login } onChange = { e => setLogin(e.target.value) }/>
                     <input type="password" placeholder="Senha" value = { password } onChange = { e => setPassword(e.target.value) }/>
                   </div>
                   <button className = { styles.buttonConnect } type="submit">
