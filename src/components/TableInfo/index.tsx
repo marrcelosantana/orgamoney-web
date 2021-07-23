@@ -28,12 +28,13 @@ export default function TableInfo() {
     setMonths(response.data);
   }
 
-  async function handleDeleteData(id){
+  async function handleDeleteData(idIncome){
     try{
-      await api.delete(`income/${id}`, {  //Função ainda não está funcionando.
+      await api.delete(`income/${idIncome}`, {  //Função ainda não está funcionando.
+        params: {idIncome, idMonth: "Abril" },
         headers: { Authorization: idUser },
       });
-      setIncome(income.filter(income => income.id !== id));
+      setIncome(income.filter(income => income.id !== idIncome));
     } catch (err) {
       toast.error("Não foi possível deletar, tente novamente!");
     }
@@ -52,6 +53,22 @@ export default function TableInfo() {
           </tr>
         </thead>
         <tbody>
+        {months?.incomes.map((income) => (
+            <tr className={ styles.tBody } key={ income.id } >
+              <td>
+                {new Intl.DateTimeFormat("pt-BR").format(new Date(income.date))}
+              </td>
+              <td>{ income.name }</td>
+              <td>{ income.category.name }</td>
+              <td className={ styles.valueWithdraw }>
+              {new Intl.NumberFormat("pt-BR", {style: "currency", currency: "BRL",}).format(income.value)}
+              </td>
+              <td>
+                <AiFillEdit className={ styles.icons } />
+                <AiFillDelete className={ styles.icons } onClick = {() => handleDeleteData(income.id)} />
+              </td>
+            </tr>
+          ))}
           {months?.bills.map((bill) => (
             <tr className={styles.tBody} key={ bill.id }>
               <td>
