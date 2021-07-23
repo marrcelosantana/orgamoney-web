@@ -22,8 +22,7 @@ export default function Home() {
       handleSetUser(response.data);
       router.push('/main')
     } catch(err){
-      alert('Falha no login, tente novamente!');
-      toast.error("This didn't work.")
+      toast.error("Falha no login, tente novamente!");
     }
   }
 

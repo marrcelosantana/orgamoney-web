@@ -1,7 +1,14 @@
 import styles from './styles.module.scss';
 import { CgLogOut } from 'react-icons/cg';
+import router from 'next/router';
 
 export default function Header (){
+
+  function handleLogout(){
+    localStorage.clear();
+    router.push('/');
+  }
+
   return (
     <header>
       <div className = { styles.container }>
@@ -10,7 +17,7 @@ export default function Header (){
           <span>| Página Inicial</span>
         </div>
         <div className= { styles.options }>
-          <a href="/">
+          <a onClick = { handleLogout }>
             Sair
             <CgLogOut/>
           </a>

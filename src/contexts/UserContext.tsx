@@ -27,7 +27,7 @@ export function UserProvider({ children }: UserProviderProps) {
       Cookies.set('orgamoneyUser', JSON.stringify(_user));
   }
 
-  function verifyCookiesAndSetUser():void{
+  function verifyCookiesAndSetUser(): void{
     const userCookies = Cookies.get('orgamoneyUser');
     if(userCookies){
       setUser(JSON.parse(userCookies));

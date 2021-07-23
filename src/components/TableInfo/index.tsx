@@ -4,6 +4,8 @@ import { useUserContext } from "../../contexts/UserContext";
 import api from "../../services/api";
 import { useEffect, useState } from "react";
 import Month from "../../models/month";
+import toast from 'react-hot-toast';
+
 
 export default function TableInfo() {
   const { user, verifyCookiesAndSetUser } = useUserContext();
@@ -11,6 +13,7 @@ export default function TableInfo() {
   const idUser = user?.id;
 
   const [months, setMonths] = useState<Month>();
+  const [income, setIncome] = useState([]);
 
   useEffect(() => {
     getDataMonth();
@@ -23,6 +26,17 @@ export default function TableInfo() {
       headers: { Authorization: idUser },
     });
     setMonths(response.data);
+  }
+
+  async function handleDeleteData(id){
+    try{
+      await api.delete(`income/${id}`, {  //Função ainda não está funcionando.
+        headers: { Authorization: idUser },
+      });
+      setIncome(income.filter(income => income.id !== id));
+    } catch (err) {
+      toast.error("Não foi possível deletar, tente novamente!");
+    }
   }
 
   return (
@@ -38,41 +52,19 @@ export default function TableInfo() {
           </tr>
         </thead>
         <tbody>
-          {months?.incomes.map((income) => (
-            <tr className={styles.tBody} key={income.id}>
-              <td>
-                {new Intl.DateTimeFormat("pt-BR").format(new Date(income.date))}
-              </td>
-              <td>{income.name}</td>
-              <td>{income.category.name}</td>
-              <td className={styles.valueWithdraw}>
-                {new Intl.NumberFormat("pt-BR", {
-                  style: "currency",
-                  currency: "BRL",
-                }).format(income.value)}
-              </td>
-              <td>
-                <AiFillEdit className={styles.icons} />
-                <AiFillDelete className={styles.icons} />
-              </td>
-            </tr>
-          ))}
           {months?.bills.map((bill) => (
-            <tr className={styles.tBody} key={bill.id}>
+            <tr className={styles.tBody} key={ bill.id }>
               <td>
                 {new Intl.DateTimeFormat("pt-BR").format(new Date(bill.date))}
               </td>
-              <td>{bill.name}</td>
-              <td>{bill.category.name}</td>
-              <td className={styles.valueWithdraw}>
-              {new Intl.NumberFormat("pt-BR", {
-                  style: "currency",
-                  currency: "BRL",
-                }).format(bill.value)}
+              <td>{ bill.name }</td>
+              <td>{ bill.category.name }</td>
+              <td className={ styles.valueWithdraw }>
+                {new Intl.NumberFormat("pt-BR", {style: "currency", currency: "BRL",}).format(bill.value)}
               </td>
               <td>
-                <AiFillEdit className={styles.icons} />
-                <AiFillDelete className={styles.icons} />
+                <AiFillEdit className={ styles.icons } />
+                <AiFillDelete className={ styles.icons } onClick = {() => handleDeleteData(bill.id)}/>
               </td>
             </tr>
           ))}

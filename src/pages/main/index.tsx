@@ -11,7 +11,7 @@ import { useUserContext } from "../../contexts/UserContext";
 export default function Main() {
   const { verifyCookiesAndSetUser, user } = useUserContext();
 
-  useEffect(()=>{verifyCookiesAndSetUser()},[])
+  useEffect(() => { verifyCookiesAndSetUser() }, []);
 
   return (
     <>
