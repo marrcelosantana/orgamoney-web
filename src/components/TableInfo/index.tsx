@@ -70,7 +70,7 @@ export default function TableInfo() {
             </tr>
           ))}
           {months?.bills.map((bill) => (
-            <tr className={styles.tBody} key={ bill.id }>
+            <tr className={ styles.tBody } key={ bill.id }>
               <td>
                 {new Intl.DateTimeFormat("pt-BR").format(new Date(bill.date))}
               </td>

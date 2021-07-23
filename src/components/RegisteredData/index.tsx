@@ -9,8 +9,7 @@ export default function RegisteredData() {
          <div className={styles.date}>
          <select name="month" id="month">
             <option value="1" disabled selected>Mês</option>
-            <option value="2">Fevereiro</option>
-            
+            <option value="2">Fevereiro</option> 
             <option value="3">Janeiro</option>
           </select>
           <select name="year" id="year">

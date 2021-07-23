@@ -7,10 +7,8 @@ export default function Graphics(){
         <span>GRÁFICOS</span>
       </header>
       <div className={ styles.graphic }>
-        MODELO DE GRÁFICO
+        <p>MODELO DE GRÁFICO</p>
       </div>
     </div>
-
-
   );
 }
