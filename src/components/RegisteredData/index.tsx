@@ -1,7 +1,18 @@
 import styles from "./styles.module.scss";
 import TableInfo from "../TableInfo";
+import { useUserContext } from "../../contexts/UserContext";
+import api from '../../services/api';
 
 export default function RegisteredData() {
+
+  const { user } = useUserContext();
+
+  const idUser = user?.id;
+
+  async function getDataMonth(){
+    const data = await api.get('/month',{headers: {Authorization : idUser}})
+  }
+
   return(
     <div className = { styles.container }>
       <header className = { styles.header }>

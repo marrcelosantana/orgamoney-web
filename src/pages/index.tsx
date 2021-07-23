@@ -4,23 +4,27 @@ import { FiLogIn } from 'react-icons/fi';
 import Link from 'next/link';
 import { InitialLogo } from '../components/InitialLogo';
 import api from '../services/api';
-import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { FormEvent, useState } from 'react';
+import { useRouter } from "next/router";
+import toast from 'react-hot-toast';
+import { useUserContext } from '../contexts/UserContext';
+
 
 export default function Home() {
-
+  const { handleSetUser } = useUserContext();
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
-  const history = useHistory();
-  
-  async function handleLogin(e){
-    e.preventDefault();
+  const router = useRouter();
 
+  async function handleLogin(e: FormEvent){
+    e.preventDefault();
     try{
       const response = await api.post('/user/session', { login, password });
-      history.push('/Main')
+      handleSetUser(response.data);
+      router.push('/main')
     } catch(err){
       alert('Falha no login, tente novamente!');
+      toast.error("This didn't work.")
     }
   }
 
@@ -46,7 +50,7 @@ export default function Home() {
                     CONECTAR
                   </button>
                   <div className = { styles.options }>
-                    <Link href = "/Register">
+                    <Link href = "/register">
                       <a>Cadastre-se agora!</a>
                     </Link>
                   </div>

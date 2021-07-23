@@ -3,30 +3,33 @@ import styles from "./register.module.scss";
 import { FiLogIn } from "react-icons/fi";
 import { TiArrowBackOutline } from "react-icons/ti";
 import Link from "next/link";
-import { useHistory } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { useRouter } from "next/router";
 import { InitialLogo } from "../../components/InitialLogo";
 import api from '../../services/api';
-import { useState } from "react";
+import { FormEvent, useState } from "react";
+import { Toaster } from 'react-hot-toast';
+import User from '../../models/user';
 
 export default function Register() {
-
   const [name, setName] = useState('');
   const [login, setLogin] = useState ('');
   const [password, setPassword] = useState ('');
 
-  const history = useHistory();
+  const router = useRouter();
 
-  async function handleRegister(e){
+  async function handleRegister(e: FormEvent){
     e.preventDefault();
-
     const data = {name, login, password};
-    
     try{
-      const response = await api.post('/user', data);
-      history.push('/');
-      
+      const response = await api.post<User>('/user', data);
+      toast.success('Cadastro realizado com sucesso! 🤑',{
+        duration: 2000,
+      });
+      setTimeout(()=>{ router.push('/') }, 2000);
     }catch(err){
-      alert('Erro no cadastro, tente novamente!');
+      alert('Erro no cadastro, tente novamente!'+ err);
+      
     }
   }
 
@@ -36,6 +39,7 @@ export default function Register() {
         <title>Cadastro | OrgaMoney</title>
       </Head>
       <div className={ styles.centerContainer }>
+      <Toaster/>
         <div className={ styles.logoArea }>
           <InitialLogo />
         </div>
