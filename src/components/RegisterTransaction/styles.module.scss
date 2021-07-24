@@ -57,7 +57,7 @@
       margin: 1rem 0;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.5rem;
+      gap: 1rem;
     }
 
     .optionsRadio{
@@ -80,6 +80,7 @@
         width: 100%;
         border-radius: 5px;
         background-color: var(--orga-green);
+      
       }
 
       .withdraw{

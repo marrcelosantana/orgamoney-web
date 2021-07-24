@@ -56,6 +56,7 @@ export default function RegisterTransaction(){
       <header className = { styles.header}>
         <span>CADASTRAR TRANSAÇÃO</span>
       </header>
+      
       <div className = { styles.menu }>
         <form className = { styles.formulary } onSubmit = { register }>
             <div className = { styles.title }>
