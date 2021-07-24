@@ -7,30 +7,31 @@ import RegisteredData from "../../components/RegisteredData";
 import { useEffect } from "react";
 import { useUserContext } from "../../contexts/UserContext";
 
-
 export default function Main() {
-  const { verifyCookiesAndSetUser, user } = useUserContext();
+  const { verifyCookiesAndSetUser } = useUserContext();
 
-  useEffect(() => { verifyCookiesAndSetUser() }, []);
+  useEffect(() => {
+    verifyCookiesAndSetUser();
+  }, []);
 
   return (
     <>
       <Head>
         <title>Início | OrgaMoney</title>
       </Head>
-      <div className={ styles.container }>
+      <div className={styles.container}>
         <Header />
-        <div className={ styles.content }>
-          <div className={ styles.leftContent }>
-            <div className={ styles.registeredData }>
+        <div className={styles.content}>
+          <div className={styles.leftContent}>
+            <div className={styles.registeredData}>
               <RegisteredData />
             </div>
           </div>
-          <div className={ styles.rightContent }>
-            <div className={ styles.registerTransaction }>
+          <div className={styles.rightContent}>
+            <div className={styles.registerTransaction}>
               <RegisterTransaction />
             </div>
-            <div className = { styles.graphics }>
+            <div className={styles.graphics}>
               <Graphics />
             </div>
           </div>

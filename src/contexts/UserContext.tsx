@@ -4,13 +4,15 @@ import Category from "../models/category";
 import Income from "../models/income";
 import Month from "../models/year";
 import User from "../models/user";
-import Cookies from 'js-cookie'
+import Cookies from "js-cookie";
 import router from "next/router";
+import { useEffect } from "react";
 
 interface UserContextData {
   user: User;
   handleSetUser(_user: User): void;
-  verifyCookiesAndSetUser():void;
+  verifyCookiesAndSetUser(): void;
+  getUserLocalStorage(): Promise<User>;
 }
 
 interface UserProviderProps {
@@ -20,20 +22,28 @@ interface UserProviderProps {
 export const UserContext = createContext({} as UserContextData);
 
 export function UserProvider({ children }: UserProviderProps) {
-  const [user, setUser] = useState<User>(null);
+  const [user, setUser] = useState<User>();
+  useEffect(() => {}, []);
 
   function handleSetUser(_user: User): void {
-      setUser(_user);
-      Cookies.set('orgamoneyUser', JSON.stringify(_user));
+    setUser(_user);
+    localStorage.setItem("orgamoneyUser", JSON.stringify(_user));
+    Cookies.set("authorization", JSON.stringify(_user.id));
   }
 
-  function verifyCookiesAndSetUser(): void{
-    const userCookies = Cookies.get('orgamoneyUser');
-    if(userCookies){
+  async function getUserLocalStorage(): Promise<User> {
+    const _user = await localStorage.getItem("orgamoneyUser");
+    const user = JSON.parse(_user) as User;
+    return user ? user : null;
+  }
+
+  function verifyCookiesAndSetUser(): void {
+    const userCookies = Cookies.get("orgamoneyUser");
+    if (userCookies) {
       setUser(JSON.parse(userCookies));
       return;
-    }else{
-      router.push('/');
+    } else {
+      router.push("/");
     }
   }
 
@@ -42,7 +52,8 @@ export function UserProvider({ children }: UserProviderProps) {
       value={{
         user,
         handleSetUser,
-        verifyCookiesAndSetUser
+        verifyCookiesAndSetUser,
+        getUserLocalStorage,
       }}
     >
       {children}
