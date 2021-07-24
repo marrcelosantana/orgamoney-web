@@ -5,8 +5,12 @@ import api from "../../services/api";
 import Cookies from "js-cookie";
 import Year from "../../models/year";
 import Month from "../../models/month";
+import { useUserContext } from "../../contexts/UserContext";
 
 export default function RegisteredData() {
+  const { month, handleSetMonth, totalEntry, totalExit, totalFinal } =
+    useUserContext();
+
   const idUser = Cookies.get("authorization");
   const [months, setMonths] = useState<Month[]>([]);
 
@@ -18,8 +22,8 @@ export default function RegisteredData() {
     const response = await api.get("/year", {
       headers: { Authorization: JSON.parse(idUser) },
     });
-    const year = response.data as Year;
-    //setMonths(year);
+    const year = response.data as Year[];
+    setMonths(year[0].months as Month[]);
   }
 
   return (
@@ -27,22 +31,24 @@ export default function RegisteredData() {
       <header className={styles.header}>
         <span>DADOS REGISTRADOS</span>
         <div className={styles.date}>
-          <select name="month" id="month">
+          <select
+            name="month"
+            id="month"
+            onChange={(e) => handleSetMonth(e.target.value)}
+          >
             <option disabled selected>
-              Mês
+              {month}
             </option>
-            {months.map((month, key) => (
-              <option value={month.name} key={key}>
-                {month.name}
+            {months.map((_month, key) => (
+              <option value={_month.name} key={key}>
+                {_month.name}
               </option>
             ))}
           </select>
           <select name="year" id="year">
             <option value="1" disabled selected>
-              Ano
+              2021
             </option>
-            <option value="2">2021</option>
-            <option value="3">2020</option>
           </select>
         </div>
       </header>
@@ -52,14 +58,34 @@ export default function RegisteredData() {
       <footer className={styles.footer}>
         <div className={styles.info}>
           <label>
-            ENTRADAS: <span className={styles.deposit}>R$3000,00</span>
+            ENTRADAS:{" "}
+            <span className={styles.deposit}>
+              {new Intl.NumberFormat("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+              }).format(totalEntry)}
+            </span>
           </label>
           <label>
-            SAÍDA: <span className={styles.withdraw}>R$2000,00</span>
+            SAÍDA:{" "}
+            <span className={styles.withdraw}>
+              {new Intl.NumberFormat("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+              }).format(totalExit)}
+            </span>
           </label>
         </div>
         <div className={styles.total}>
-          <span>TOTAL: +R$1000,00</span>
+          <label>
+            TOTAL:{" "}
+            <span className={styles.withdraw}>
+              {new Intl.NumberFormat("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+              }).format(totalFinal)}
+            </span>
+          </label>
         </div>
       </footer>
     </div>

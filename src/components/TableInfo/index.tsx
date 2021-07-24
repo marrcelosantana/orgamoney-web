@@ -1,37 +1,21 @@
 import styles from "./styles.module.scss";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import api from "../../services/api";
-import { useEffect, useState } from "react";
-import Month from "../../models/month";
+import { useState } from "react";
 import toast from "react-hot-toast";
-import Cookies from "js-cookie";
+import { useUserContext } from "../../contexts/UserContext";
 
 export default function TableInfo() {
-  const idUser = Cookies.get("authorization");
+  const { month, authorization, selectMonth } = useUserContext();
 
-  const [months, setMonths] = useState<Month>();
   const [income, setIncome] = useState([]);
-
-  useEffect(() => {
-    getDataMonth();
-  }, []);
-
-  async function getDataMonth() {
-    const response = await api.get("/month", {
-      params: { month: "Abril" },
-      headers: { Authorization: JSON.parse(idUser) },
-    });
-    setMonths(response.data);
-  }
 
   async function handleDeleteData(idIncome) {
     try {
-      await api.delete(`income/${idIncome}`, {
-        //Função ainda não está funcionando.
-        params: { idIncome, idMonth: "Abril" },
-        headers: { Authorization: idUser },
+      await api.delete(`/income/${idIncome}`, {
+        params: { idIncome, idMonth: month },
+        headers: { Authorization: JSON.parse(authorization) },
       });
-      setIncome(income.filter((income) => income.id !== idIncome));
     } catch (err) {
       toast.error("Não foi possível deletar, tente novamente!");
     }
@@ -50,7 +34,7 @@ export default function TableInfo() {
           </tr>
         </thead>
         <tbody>
-          {months?.incomes.map((income) => (
+          {selectMonth?.incomes.map((income) => (
             <tr className={styles.tBody} key={income.id}>
               <td>
                 {new Intl.DateTimeFormat("pt-BR").format(new Date(income.date))}
@@ -72,7 +56,7 @@ export default function TableInfo() {
               </td>
             </tr>
           ))}
-          {months?.bills.map((bill) => (
+          {selectMonth?.bills.map((bill) => (
             <tr className={styles.tBody} key={bill.id}>
               <td>
                 {new Intl.DateTimeFormat("pt-BR").format(new Date(bill.date))}

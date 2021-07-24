@@ -1,24 +1,22 @@
 import styles from "./styles.module.scss";
 import { FormEvent, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import { FiCheckCircle } from "react-icons/fi";
 import api from "../../services/api";
 import User from "../../models/user";
 import { useUserContext } from "../../contexts/UserContext";
 import Category from "../../models/category";
 import Cookies from "js-cookie";
-
-//falta listar as categorias no select
-//Os botões de entrada e saída agora são inputs do tipo Radio, fica melhor pra receber os dados.
-//Função de listar categorias em comentário pois a rota ainda não está correta.
-//Apagar a parte dos antigos botões comentadas se aprovar.
+import { useContext } from "react";
 
 export default function RegisterTransaction() {
+  const { month } = useUserContext();
+
   const [name, setName] = useState("");
   const [value, setValue] = useState(0);
   const [idCategory, setCategory] = useState("");
   const [date, setDate] = useState("");
-  const [idMonth, setMonth] = useState("Abril");
   const [typePayment, setTypePayment] = useState("");
 
   const [categories, setCategories] = useState<Category[]>([]);
@@ -40,8 +38,7 @@ export default function RegisterTransaction() {
   async function register(e: FormEvent) {
     // registrar uma renda/compra.
     e.preventDefault();
-    const data = { name, value, idCategory, date, idMonth };
-    console.log(data);
+    const data = { name, value, idCategory, date, idMonth: month };
     try {
       if (typePayment === "entrada") {
         await api.post("/income", data, {
@@ -52,35 +49,25 @@ export default function RegisterTransaction() {
           headers: { Authorization: JSON.parse(idUser) },
         });
       }
-      toast.success("Registo realizado com sucesso! 🤑", {
-        duration: 2000,
+      toast.success("Transação cadastrada com sucesso! 🤑", {
+        duration: 6000,
       });
     } catch (err) {
-      alert("Erro ao registrar, tente novamente!" + err);
+      toast.error("Erro ao cadastrar transação, tente novamente! 😓", {
+        duration: 6000,
+      });
     }
   }
-
-  // useEffect(() => {
-  //   listCategories();
-  // }, []);
-
-  // async function listCategories(){  //listar categorias no select (talvez a rota esteja errada)
-  //   verifyCookiesAndSetUser();
-  //   const response = await api.get("/category", {
-  //     params: { category: "Alimentação" },
-  //     headers: { Authorization: idUser },
-  //   });
-  //   setCategories(response.data);
-  // }
 
   return (
     <div className={styles.container}>
       <header className={styles.header}>
         <span>CADASTRAR TRANSAÇÃO</span>
       </header>
-
+      <Toaster />
+      <Toaster />
       <div className={styles.menu}>
-        <form className={styles.formulary} onSubmit={register}>
+        <form className={styles.formulary}>
           <div className={styles.title}>
             <input
               type="text"
@@ -108,17 +95,29 @@ export default function RegisterTransaction() {
             />
           </div>
           <div className={styles.optionsRadio}>
-            <div className={styles.deposit}>
+            <div
+              className={
+                typePayment === "entrada"
+                  ? styles.depositSelected
+                  : styles.deposit
+              }
+            >
               <label htmlFor="inputDeposit">Entrada</label>
               <input
                 type="radio"
                 name="income"
                 onChange={(e) => {
-                  setTypePayment("endrata");
+                  setTypePayment("entrada");
                 }}
               />
             </div>
-            <div className={styles.withdraw}>
+            <div
+              className={
+                typePayment === "saida"
+                  ? styles.withdrawSelected
+                  : styles.withdraw
+              }
+            >
               <label htmlFor="inputDeposit">Saída</label>
               <input
                 type="radio"
@@ -146,7 +145,7 @@ export default function RegisterTransaction() {
           </div>
           <div className={styles.registerButton}>
             <button type="submit">
-              <div className={styles.buttonContent}>
+              <div className={styles.buttonContent} onClick={register}>
                 CADASTRAR
                 <FiCheckCircle />
               </div>
