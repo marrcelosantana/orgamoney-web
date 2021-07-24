@@ -129,16 +129,6 @@ export default function RegisterTransaction() {
               />
             </div>
           </div>
-          {/* <div className = { styles.optionButtons }>
-               <button className= { styles.depositButton }>
-                 <span>ENTRADA</span>
-                 <img src= "/images/income.svg" alt="income" /> 
-              </button>
-              <button className= { styles.withdrawButton }>
-                <span>SAÍDA</span>
-                 <img src= "/images/outcome.svg" alt="outcome" /> 
-              </button>
-            </div>  */}
           <div className={styles.category}>
             <select
               name="categorys"
