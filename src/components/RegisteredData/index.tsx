@@ -1,18 +1,41 @@
 import styles from "./styles.module.scss";
 import TableInfo from "../TableInfo";
+import { useEffect, useState } from "react";
+import api from "../../services/api";
+import Cookies from "js-cookie";
+import Year from "../../models/year";
+import Month from "../../models/month";
 
 export default function RegisteredData() {
+  const idUser = Cookies.get("authorization");
+  const [months, setMonths] = useState<Month[]>([]);
+
+  useEffect(() => {
+    getDataMonth();
+  }, []);
+
+  async function getDataMonth() {
+    const response = await api.get("/year", {
+      headers: { Authorization: JSON.parse(idUser) },
+    });
+    const year = response.data as Year;
+    //setMonths(year);
+  }
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
         <span>DADOS REGISTRADOS</span>
         <div className={styles.date}>
           <select name="month" id="month">
-            <option value="1" disabled selected>
+            <option disabled selected>
               Mês
             </option>
-            <option value="2">Fevereiro</option>
-            <option value="3">Janeiro</option>
+            {months.map((month, key) => (
+              <option value={month.name} key={key}>
+                {month.name}
+              </option>
+            ))}
           </select>
           <select name="year" id="year">
             <option value="1" disabled selected>

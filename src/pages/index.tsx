@@ -10,7 +10,7 @@ import toast from "react-hot-toast";
 import { useUserContext } from "../contexts/UserContext";
 
 export default function Home() {
-  const { handleSetUser } = useUserContext();
+  const { handleSetAuthorization } = useUserContext();
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
@@ -19,7 +19,7 @@ export default function Home() {
     e.preventDefault();
     try {
       const response = await api.post("/user/session", { login, password });
-      handleSetUser(response.data);
+      handleSetAuthorization(response.data);
       router.push("/main");
     } catch (err) {
       toast.error("Falha no login, tente novamente!");

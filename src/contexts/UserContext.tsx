@@ -9,10 +9,10 @@ import router from "next/router";
 import { useEffect } from "react";
 
 interface UserContextData {
-  user: User;
-  handleSetUser(_user: User): void;
-  verifyCookiesAndSetUser(): void;
+  month: string;
+  handleSetAuthorization(_user: User): void;
   getUserLocalStorage(): Promise<User>;
+  handleSetMonth(month: string): void;
 }
 
 interface UserProviderProps {
@@ -22,12 +22,13 @@ interface UserProviderProps {
 export const UserContext = createContext({} as UserContextData);
 
 export function UserProvider({ children }: UserProviderProps) {
-  const [user, setUser] = useState<User>();
+  const [month, setMonth] = useState("Abril");
+  function handleSetMonth(month: string): void {
+    setMonth(month);
+  }
   useEffect(() => {}, []);
 
-  function handleSetUser(_user: User): void {
-    setUser(_user);
-    localStorage.setItem("orgamoneyUser", JSON.stringify(_user));
+  function handleSetAuthorization(_user: User): void {
     Cookies.set("authorization", JSON.stringify(_user.id));
   }
 
@@ -37,22 +38,12 @@ export function UserProvider({ children }: UserProviderProps) {
     return user ? user : null;
   }
 
-  function verifyCookiesAndSetUser(): void {
-    const userCookies = Cookies.get("orgamoneyUser");
-    if (userCookies) {
-      setUser(JSON.parse(userCookies));
-      return;
-    } else {
-      router.push("/");
-    }
-  }
-
   return (
     <UserContext.Provider
       value={{
-        user,
-        handleSetUser,
-        verifyCookiesAndSetUser,
+        handleSetMonth,
+        month,
+        handleSetAuthorization,
         getUserLocalStorage,
       }}
     >

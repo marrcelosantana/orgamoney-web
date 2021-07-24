@@ -4,16 +4,8 @@ import Head from "next/head";
 import RegisterTransaction from "../../components/RegisterTransaction";
 import Graphics from "../../components/Graphics";
 import RegisteredData from "../../components/RegisteredData";
-import { useEffect } from "react";
-import { useUserContext } from "../../contexts/UserContext";
 
 export default function Main() {
-  const { verifyCookiesAndSetUser } = useUserContext();
-
-  useEffect(() => {
-    verifyCookiesAndSetUser();
-  }, []);
-
   return (
     <>
       <Head>
