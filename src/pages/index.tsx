@@ -5,6 +5,7 @@ import Link from "next/link";
 import { InitialLogo } from "../components/InitialLogo";
 import api from "../services/api";
 import { FormEvent, useState } from "react";
+import { Toaster } from "react-hot-toast";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import { useUserContext } from "../contexts/UserContext";
@@ -31,6 +32,7 @@ export default function Home() {
       <Head>
         <title>Login | OrgaMoney</title>
       </Head>
+      <Toaster />
       <div className={styles.container}>
         <div className={styles.centerContainer}>
           <div className={styles.logoArea}>
