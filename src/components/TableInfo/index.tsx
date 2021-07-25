@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { useUserContext } from "../../contexts/UserContext";
 
 export default function TableInfo() {
-  const { month, authorization, selectMonth, handleSetMonth } =
+  const { month, authorization, selectMonth, handleSetMonth, handleSetReload } =
     useUserContext();
 
   async function handleDeleteDataIncome(idIncome) {
@@ -27,7 +27,7 @@ export default function TableInfo() {
         params: { idBill, nameMonth: month },
         headers: { Authorization: JSON.parse(authorization) },
       });
-      handleSetMonth(month);
+      handleSetReload();
     } catch (err) {
       toast.error("Não foi possível deletar, tente novamente!");
       console.log(err);

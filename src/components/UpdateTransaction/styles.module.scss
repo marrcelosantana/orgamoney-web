@@ -1,0 +1,244 @@
+.container {
+  width: 100%;
+  max-width: 100%;
+  border: 2px;
+  border-style: groove;
+  border-color: var(--orga-green);
+  padding: 0 0 1rem 0;
+
+  .header {
+    width: 100%;
+    color: var(--orga-orange);
+    font-family: rajdhani, sans-serif;
+    font-weight: bold;
+    font-size: 1.3rem;
+    background: var(--black-omni);
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu {
+    padding: 2%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    input {
+      text-align: center;
+      border-radius: 5px;
+      height: 2rem;
+      border: 2px;
+      border-color: var(--orga-green);
+      border-style: groove;
+      font-weight: bold;
+      font-family: rajdhani;
+      background: none;
+      color: var(--orga-orange);
+    }
+
+    ::-webkit-input-placeholder {
+      color: var(--orga-orange);
+      filter: opacity(0.35);
+    }
+
+    .title {
+      input {
+        width: 100%;
+      }
+    }
+
+    .miniInputs {
+      input {
+        width: 100%;
+      }
+      margin: 1rem 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .optionsRadio {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      width: 100%;
+
+      .buttonContent {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+      }
+
+      .deposit {
+        width: 100%;
+        background-color: var(--orga-green);
+        color: white;
+        border: 0;
+        border-radius: 5px;
+        height: 2rem;
+        font-family: rajdhani;
+        font-weight: bold;
+        font-size: 1.2rem;
+        opacity: 50%;
+      }
+
+      .depositSelected {
+        width: 100%;
+        background-color: var(--orga-green);
+        color: white;
+        border: 0;
+        border-radius: 5px;
+        height: 2rem;
+        font-family: rajdhani;
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+
+      .withdraw {
+        width: 100%;
+        background-color: red;
+        color: white;
+        border: 0;
+        border-radius: 5px;
+        height: 2rem;
+        font-family: rajdhani;
+        font-weight: bold;
+        font-size: 1.2rem;
+        opacity: 50%;
+      }
+
+      .withdrawSelected {
+        width: 100%;
+        background-color: red;
+        color: white;
+        border: 0;
+        border-radius: 5px;
+        height: 2rem;
+        font-family: rajdhani;
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+    }
+
+    .category {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      select {
+        text-align-last: center;
+        width: 100%;
+        height: 2rem;
+        background: none;
+        color: var(--orga-orange);
+        font-family: rajdhani, sans-serif;
+        font-weight: bold;
+        border: 2px;
+        border-color: var(--orga-green);
+        border-style: groove;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+
+        option {
+          color: black;
+        }
+      }
+
+      .addCategory {
+        .iconAdd {
+          color: var(--orga-orange);
+          cursor: pointer;
+          width: 2rem;
+          height: 2rem;
+          margin: 0 0 15px 10px;
+
+          transition: filter 0.2ms;
+
+          &:hover {
+            filter: brightness(0.8);
+          }
+        }
+      }
+    }
+
+    .categoryInput {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+
+      .newCategory {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        button {
+          border: 0;
+        }
+
+        .input {
+          width: 100%;
+          margin-bottom: 1rem;
+        }
+
+        .addCategory {
+          .iconAdd {
+            color: var(--orga-green);
+            cursor: pointer;
+            width: 2rem;
+            height: 2rem;
+            margin: 0 0 15px 10px;
+
+            transition: filter 0.2ms;
+
+            &:hover {
+              filter: brightness(0.8);
+            }
+          }
+        }
+      }
+    }
+
+    .registerButton {
+      button {
+        width: 100%;
+        height: 3rem;
+        border-radius: 8px;
+        border: 0;
+        background-color: var(--orga-orange);
+
+        font-family: rajdhani, sans-serif;
+        font-size: 1.5rem;
+        font-weight: bold;
+
+        transition: 0.2ms;
+
+        &:hover {
+          background-color: var(--orga-green);
+          font-weight: bold;
+          color: white;
+        }
+
+        .buttonContent {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 5px;
+        }
+      }
+    }
+  }
+  @media (max-width: 720px) {
+    margin-bottom: 50%;
+  }
+}

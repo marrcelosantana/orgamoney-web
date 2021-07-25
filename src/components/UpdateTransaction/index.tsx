@@ -15,7 +15,7 @@ import Cookies from "js-cookie";
 import { useContext } from "react";
 import { RiAddCircleFill } from "react-icons/ri";
 
-export default function RegisterTransaction() {
+export default function RegisterTransaction(id: string) {
   const { month, handleSetReload } = useUserContext();
 
   const [name, setName] = useState("");
@@ -88,31 +88,6 @@ export default function RegisterTransaction() {
     } catch (err) {
       toast.error("Erro ao cadastrar transação, tente novamente! 😓", {
         duration: 6000,
-      });
-    }
-  }
-
-  async function update(e: FormEvent) {
-    // registrar uma renda/compra.
-    e.preventDefault();
-    const data = { name, value, idCategory, date, idMonth: month };
-    try {
-      if (typePayment === "entrada") {
-        await api.post("/income", data, {
-          headers: { Authorization: JSON.parse(idUser) },
-        });
-      } else {
-        await api.post("/bill", data, {
-          headers: { Authorization: JSON.parse(idUser) },
-        });
-      }
-      handleSetReload();
-      toast.success("Transação editada com sucesso! 🤑", {
-        duration: 2000,
-      });
-    } catch (err) {
-      toast.error("Erro ao editar transação, tente novamente! 😓", {
-        duration: 2000,
       });
     }
   }

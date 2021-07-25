@@ -16,6 +16,7 @@ interface UserContextData {
   totalFinal: number;
   authorization: string;
   selectMonth: Month;
+  handleSetReload(): void;
   handleSetAuthorization(_user: User): void;
   getUserLocalStorage(): Promise<User>;
   handleSetMonth(month: string): void;
@@ -61,8 +62,11 @@ export function UserProvider({ children }: UserProviderProps) {
     }
   }
 
-  function handleSetMonth(month: string): void {
+  function handleSetReload(): void {
     setReload(!reload);
+  }
+
+  function handleSetMonth(month: string): void {
     setMonth(month);
   }
 
@@ -89,6 +93,7 @@ export function UserProvider({ children }: UserProviderProps) {
       value={{
         authorization,
         handleSetMonth,
+        handleSetReload,
         month,
         handleSetAuthorization,
         getUserLocalStorage,
