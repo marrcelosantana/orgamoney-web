@@ -65,60 +65,75 @@
       align-items: center;
       justify-content: center;
       color: white;
-      font-family: rajdhani;
       font-size: 20px;
       font-weight: bold;
       gap: 1rem;
       margin-bottom: 1rem;
+      width: 100%;
 
-      .deposit {
+      .buttonContent {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 5px;
-        background-color: white;
+      }
+
+      .deposit {
         width: 100%;
-        border-radius: 5px;
         background-color: var(--orga-green);
+        color: white;
+        border: 0;
+        border-radius: 5px;
+        height: 2rem;
+        font-family: rajdhani;
+        font-weight: bold;
+        font-size: 1.2rem;
         opacity: 50%;
       }
 
       .depositSelected {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 5px;
-        background-color: white;
         width: 100%;
-        border-radius: 5px;
         background-color: var(--orga-green);
+        color: white;
+        border: 0;
+        border-radius: 5px;
+        height: 2rem;
+        font-family: rajdhani;
+        font-weight: bold;
+        font-size: 1.2rem;
       }
 
       .withdraw {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 5px;
-        background-color: white;
         width: 100%;
-        border-radius: 5px;
         background-color: red;
+        color: white;
+        border: 0;
+        border-radius: 5px;
+        height: 2rem;
+        font-family: rajdhani;
+        font-weight: bold;
+        font-size: 1.2rem;
         opacity: 50%;
       }
 
       .withdrawSelected {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 5px;
-        background-color: white;
         width: 100%;
-        border-radius: 5px;
         background-color: red;
+        color: white;
+        border: 0;
+        border-radius: 5px;
+        height: 2rem;
+        font-family: rajdhani;
+        font-weight: bold;
+        font-size: 1.2rem;
       }
     }
 
     .category {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       select {
         text-align-last: center;
         width: 100%;
@@ -135,6 +150,61 @@
 
         option {
           color: black;
+        }
+      }
+
+      .addCategory {
+        .iconAdd {
+          color: var(--orga-orange);
+          cursor: pointer;
+          width: 2rem;
+          height: 2rem;
+          margin: 0 0 15px 10px;
+
+          transition: filter 0.2ms;
+
+          &:hover {
+            filter: brightness(0.8);
+          }
+        }
+      }
+    }
+
+    .categoryInput {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+
+      .newCategory {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        button {
+          border: 0;
+        }
+
+        .input {
+          width: 100%;
+          margin-bottom: 1rem;
+        }
+
+        .addCategory {
+          .iconAdd {
+            color: var(--orga-green);
+            cursor: pointer;
+            width: 2rem;
+            height: 2rem;
+            margin: 0 0 15px 10px;
+
+            transition: filter 0.2ms;
+
+            &:hover {
+              filter: brightness(0.8);
+            }
+          }
         }
       }
     }

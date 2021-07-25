@@ -2,13 +2,18 @@ import styles from "./styles.module.scss";
 import { FormEvent, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { Toaster } from "react-hot-toast";
-import { FiCheckCircle } from "react-icons/fi";
+import {
+  FiCheckCircle,
+  FiArrowDownCircle,
+  FiArrowUpCircle,
+} from "react-icons/fi";
 import api from "../../services/api";
 import User from "../../models/user";
 import { useUserContext } from "../../contexts/UserContext";
 import Category from "../../models/category";
 import Cookies from "js-cookie";
 import { useContext } from "react";
+import { RiAddCircleFill } from "react-icons/ri";
 
 export default function RegisterTransaction() {
   const { month } = useUserContext();
@@ -18,6 +23,8 @@ export default function RegisterTransaction() {
   const [idCategory, setCategory] = useState("");
   const [date, setDate] = useState("");
   const [typePayment, setTypePayment] = useState("");
+  const [categoryCreate, setCategoryCreate] = useState(false);
+  const [nameCategory, setNameCategory] = useState("");
 
   const [categories, setCategories] = useState<Category[]>([]);
 
@@ -25,7 +32,7 @@ export default function RegisterTransaction() {
 
   useEffect(() => {
     getDataCategory();
-  }, []);
+  }, [categoryCreate]);
 
   async function getDataCategory() {
     const response = await api.get("/user", {
@@ -33,6 +40,29 @@ export default function RegisterTransaction() {
     });
     const user = response.data as User;
     setCategories(user.categories);
+  }
+
+  async function registerCategory() {
+    try {
+      if (!nameCategory.trim()) {
+        toast.error("Erro ao cadastrar categoria, tente novamente! 😓", {
+          duration: 2000,
+        });
+        return;
+      }
+      const data = { name: nameCategory };
+      await api.post("/category", data, {
+        headers: { Authorization: JSON.parse(idUser) },
+      });
+      toast.success("Categoria cadastrada com sucesso!", {
+        duration: 2000,
+      });
+    } catch (err) {
+      console.log(err.menssage);
+      toast.error("Erro ao cadastrar categoria, tente novamente! 😓", {
+        duration: 2000,
+      });
+    }
   }
 
   async function register(e: FormEvent) {
@@ -66,6 +96,8 @@ export default function RegisterTransaction() {
       </header>
       <Toaster />
       <Toaster />
+      <Toaster />
+      <Toaster />
       <div className={styles.menu}>
         <form className={styles.formulary}>
           <div className={styles.title}>
@@ -95,54 +127,91 @@ export default function RegisterTransaction() {
             />
           </div>
           <div className={styles.optionsRadio}>
-            <div
+            <button
               className={
                 typePayment === "entrada"
                   ? styles.depositSelected
                   : styles.deposit
               }
+              type="button"
+              name="income"
+              onClick={(e) => {
+                setTypePayment("entrada");
+              }}
             >
-              <label htmlFor="inputDeposit">Entrada</label>
-              <input
-                type="radio"
-                name="income"
-                onChange={(e) => {
-                  setTypePayment("entrada");
-                }}
-              />
-            </div>
-            <div
+              <div className={styles.buttonContent}>
+                <span>Entrada</span>
+                <FiArrowUpCircle />
+              </div>
+            </button>
+
+            <button
               className={
                 typePayment === "saida"
                   ? styles.withdrawSelected
                   : styles.withdraw
               }
+              type="button"
+              name="income"
+              onClick={(e) => {
+                setTypePayment("saida");
+              }}
             >
-              <label htmlFor="inputDeposit">Saída</label>
-              <input
-                type="radio"
-                name="income"
-                onChange={(e) => {
-                  setTypePayment("saida");
-                }}
-              />
+              <div className={styles.buttonContent}>
+                <span>Saída</span>
+                <FiArrowDownCircle />
+              </div>
+            </button>
+          </div>
+          {categoryCreate ? (
+            <div className={styles.categoryInput}>
+              <div className={styles.newCategory}>
+                <input
+                  className={styles.input}
+                  required
+                  placeholder="Adicione uma categoria"
+                  onChange={(e) => {
+                    setNameCategory(e.target.value);
+                  }}
+                />
+                <div className={styles.addCategory}>
+                  <RiAddCircleFill
+                    className={styles.iconAdd}
+                    onClick={() => {
+                      registerCategory();
+                      setCategoryCreate(false);
+                    }}
+                  />
+                </div>
+              </div>
             </div>
-          </div>
-          <div className={styles.category}>
-            <select
-              name="categorys"
-              id="categorys"
-              required
-              onChange={(e) => setCategory(e.target.value)}
-            >
-              <option value={0}>Selecione a categoria</option>
-              {categories.map((category, key) => (
-                <option value={category.name} key={key}>
-                  {category.name}
+          ) : (
+            <div className={styles.category}>
+              <select
+                name="categorys"
+                id="categorys"
+                required
+                onChange={(e) => setCategory(e.target.value)}
+              >
+                <option disabled selected value={0}>
+                  Selecione a categoria
                 </option>
-              ))}
-            </select>
-          </div>
+                {categories.map((category, key) => (
+                  <option value={category.name} key={key}>
+                    {category.name}
+                  </option>
+                ))}
+              </select>
+              <div className={styles.addCategory}>
+                <RiAddCircleFill
+                  className={styles.iconAdd}
+                  onClick={() => {
+                    setCategoryCreate(true);
+                  }}
+                />
+              </div>
+            </div>
+          )}
           <div className={styles.registerButton}>
             <button type="submit">
               <div className={styles.buttonContent} onClick={register}>

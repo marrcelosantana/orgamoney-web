@@ -1,23 +1,36 @@
 import styles from "./styles.module.scss";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import api from "../../services/api";
-import { useState } from "react";
 import toast from "react-hot-toast";
 import { useUserContext } from "../../contexts/UserContext";
 
 export default function TableInfo() {
-  const { month, authorization, selectMonth } = useUserContext();
+  const { month, authorization, selectMonth, handleSetMonth } =
+    useUserContext();
 
-  const [income, setIncome] = useState([]);
-
-  async function handleDeleteData(idIncome) {
+  async function handleDeleteDataIncome(idIncome) {
     try {
-      await api.delete(`/income/${idIncome}`, {
-        params: { idIncome, idMonth: month },
+      await api.delete(`/income`, {
+        params: { idIncome, nameMonth: month },
         headers: { Authorization: JSON.parse(authorization) },
       });
+      handleSetMonth(month);
     } catch (err) {
       toast.error("Não foi possível deletar, tente novamente!");
+      console.log(err);
+    }
+  }
+
+  async function handleDeleteDataBill(idBill) {
+    try {
+      await api.delete(`/bill`, {
+        params: { idBill, nameMonth: month },
+        headers: { Authorization: JSON.parse(authorization) },
+      });
+      handleSetMonth(month);
+    } catch (err) {
+      toast.error("Não foi possível deletar, tente novamente!");
+      console.log(err);
     }
   }
 
@@ -51,7 +64,7 @@ export default function TableInfo() {
                 <AiFillEdit className={styles.icons} />
                 <AiFillDelete
                   className={styles.icons}
-                  onClick={() => handleDeleteData(income.id)}
+                  onClick={() => handleDeleteDataIncome(income.id)}
                 />
               </td>
             </tr>
@@ -73,7 +86,7 @@ export default function TableInfo() {
                 <AiFillEdit className={styles.icons} />
                 <AiFillDelete
                   className={styles.icons}
-                  onClick={() => handleDeleteData(bill.id)}
+                  onClick={() => handleDeleteDataBill(bill.id)}
                 />
               </td>
             </tr>

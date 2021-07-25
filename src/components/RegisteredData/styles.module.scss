@@ -1,8 +1,8 @@
-.container{
+.container {
   max-width: 100%;
   position: relative;
   height: calc(100vh * 0.8);
-  .header{
+  .header {
     width: 100%;
     color: var(--orga-orange);
     font-family: rajdhani, sans-serif;
@@ -15,26 +15,26 @@
     justify-content: space-between;
     padding: 0 1rem 0 1rem;
 
-    .date{
+    .date {
       display: flex;
       gap: 0.5rem;
-      select{
+      select {
         background: none;
         border: 0;
         color: var(--orga-orange);
         font-family: rajdhani, sans-serif;
         font-weight: bold;
         font-size: 1.3rem;
-        option{
+        option {
           color: black;
         }
       }
     }
   }
 
-  .footer{
+  .footer {
     position: absolute;
-    bottom: 3px;    
+    bottom: 3px;
     width: 100%;
     height: 2.5rem;
     background-color: var(--black-omni);
@@ -46,25 +46,24 @@
     font-family: rajdhani, sans-serif;
     padding: 0.5rem;
 
-    .info{
+    .info {
       display: flex;
-      width: 50%;
+      width: 45%;
       justify-content: space-between;
 
-      .deposit{
+      .deposit {
         color: var(--orga-green);
       }
 
-      .withdraw{
+      .withdraw {
         color: red;
       }
     }
-    
   }
-  @media(max-width: 720px){
+  @media (max-width: 720px) {
     height: 50vh;
-    .footer{
-      bottom:0px;
+    .footer {
+      bottom: 0px;
     }
   }
 }

@@ -33,12 +33,13 @@ export function UserProvider({ children }: UserProviderProps) {
   const [totalExit, setTotalExit] = useState(0);
   const [totalFinal, setTotalFinal] = useState(0);
   const [selectMonth, setSelectMonth] = useState<Month>();
+  const [reload, setReload] = useState(false);
 
   const authorization = Cookies.get("authorization");
 
   useEffect(() => {
     getDataMonth();
-  }, [month]);
+  }, [month, reload]);
 
   useEffect(() => {
     setTotals();
@@ -61,6 +62,7 @@ export function UserProvider({ children }: UserProviderProps) {
   }
 
   function handleSetMonth(month: string): void {
+    setReload(!reload);
     setMonth(month);
   }
 
