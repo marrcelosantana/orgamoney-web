@@ -62,7 +62,7 @@ export default function TableInfo() {
               </td>
               <td>
                 <AiFillEdit className={styles.icons} />
-                <AiFillDelete
+                <AiFillDelete   
                   className={styles.icons}
                   onClick={() => handleDeleteDataIncome(income.id)}
                 />
@@ -83,7 +83,7 @@ export default function TableInfo() {
                 }).format(bill.value)}
               </td>
               <td>
-                <AiFillEdit className={styles.icons} />
+                <AiFillEdit className={styles.icons}/>
                 <AiFillDelete
                   className={styles.icons}
                   onClick={() => handleDeleteDataBill(bill.id)}
