@@ -6,14 +6,11 @@ export default function Graphics() {
   const [options, setOptions] = useState({
     title: "Gráfico de Pizza",
   });
-  const [optionsBar, setOptionsBar] = useState({
-    title: "Gráfico de Barra",
-  });
   const [data, setData] = useState([
     ["Linguagens", "Quantidade"],
-    ["React", 100],
-    ["Angula", 80],
-    ["Vue", 50],
+    ["Renda", 100],
+    ["Transporte", 80],
+    ["Alimentação", 50],
   ]);
 
   return (
@@ -24,8 +21,6 @@ export default function Graphics() {
       <div className={styles.pizzaGraphic}>
         <Chart
           className={styles.graphic}
-          width={"500px"}
-          height={"300px"}
           chartType="PieChart"
           data={data}
           options={options}

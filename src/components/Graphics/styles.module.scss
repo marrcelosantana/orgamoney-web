@@ -17,8 +17,13 @@
 
   .pizzaGraphic {
     width: 100%;
+    height: 21rem;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    .graphic{
+      width: 100%;
+    }
   }
 }
