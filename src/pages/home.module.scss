@@ -89,7 +89,28 @@
     }
   }
 
-  @media(max-width: 720px){
-    
+  @media (max-width: 720px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20%;
+    flex-direction: column;
+
+    .logoArea {
+      display: none;
+    }
+
+    .menuLogin {
+      margin-left: 10%;
+    }
+  }
+  @media (max-width: 1279px) {
+    .logoArea {
+      display: none;
+    }
+    .menuLogin {
+      margin-left: 25%;
+    }
   }
 }
+
