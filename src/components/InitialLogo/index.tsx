@@ -4,5 +4,9 @@ import logo from '../../../public/images/logo.png';
 
 export function InitialLogo() {
   // eslint-disable-next-line @next/next/no-img-element
-  return <Image src={logo} alt="logo" width={400} height={300}/>;
+  return(
+    <div className = {styles.logo}>
+      <Image src={logo} alt="logo" width={350} height={250} />
+    </div>
+  ); 
 }

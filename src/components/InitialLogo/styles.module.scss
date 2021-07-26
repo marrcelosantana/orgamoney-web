@@ -1,4 +1,5 @@
-.logo {
-  width: 20rem;
-  height: 15rem;
+@media (max-width: 768px){
+  .logo{
+    display: none;
+  }
 }

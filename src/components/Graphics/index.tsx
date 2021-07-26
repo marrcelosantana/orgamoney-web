@@ -14,18 +14,18 @@ export default function Graphics() {
   ]);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container}> 
       <header className={styles.header}>
         <span>GRÁFICOS</span>
       </header>
-      <div className={styles.pizzaGraphic}>
+      {/* <div className={styles.pizzaGraphic}>
         <Chart
           className={styles.graphic}
           chartType="PieChart"
           data={data}
           options={options}
         />
-      </div>
+      </div> */}
     </div>
   );
 }
