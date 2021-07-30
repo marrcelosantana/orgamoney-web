@@ -42,7 +42,7 @@ export default function Home() {
             <form className={styles.form} onSubmit={handleLogin}>
               <h3>LOGIN</h3>
               <div className={styles.inputs}>
-                <input
+                <input 
                   type="text"
                   placeholder="Email@address.com"
                   value={login}
