@@ -50,14 +50,14 @@
       display: flex;
       width: 45%;
       justify-content: space-between;
+    }
 
-      .deposit {
-        color: var(--orga-green);
-      }
+    .deposit {
+      color: var(--orga-green);
+    }
 
-      .withdraw {
-        color: red;
-      }
+    .withdraw {
+      color: red;
     }
   }
   @media (max-width: 720px) {
