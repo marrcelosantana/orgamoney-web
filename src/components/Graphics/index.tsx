@@ -13,16 +13,43 @@ export default function Graphics() {
   const header = [["Categoria", "Valor"]];
   const [data, setData] = useState(header);
 
+  class Recip {
+    name: string;
+    value: number;
+  }
+
   function handleData() {
     if (selectMonth) {
       let bills = selectMonth.bills.map((bill) => {
-        return [bill.category.name, bill.value];
+        let recip = new Recip();
+        recip.name = bill.category.name;
+        recip.value = bill.value;
+        return recip;
       });
       let income = selectMonth.incomes.map((income) => {
-        return [income.category.name, income.value];
+        let recip = new Recip();
+        recip.name = income.category.name;
+        recip.value = income.value;
+        return recip;
       });
-
-      setData(header.concat(bills).concat(income));
+      const billsAndIncomes = bills.concat(income);
+      let recips = [new Recip()];
+      billsAndIncomes.forEach((billOrIncome) => {
+        let tem = false;
+        recips.forEach((recip) => {
+          if (recip.name === billOrIncome.name) {
+            recip.value += billOrIncome.value;
+            tem = true;
+          }
+        });
+        if (!tem) {
+          recips.push(billOrIncome);
+        }
+      });
+      const filteredRecips = recips.map((recip) => {
+        return [recip.name, recip.value];
+      });
+      setData(header.concat(filteredRecips));
     }
   }
 
