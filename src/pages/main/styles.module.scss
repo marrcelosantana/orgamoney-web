@@ -1,53 +1,52 @@
-.container{
+.container {
   height: 100vh;
   background-color: var(--orga-gray);
 
-  .content{
+  .content {
     display: flex;
     justify-content: space-around;
     margin-top: 3rem;
     gap: 2rem;
     height: 80%;
 
-    .leftContent{
+    .leftContent {
       margin-left: 10%;
       border: 2px;
       border-style: groove;
       border-color: var(--orga-green);
       width: 50%;
     }
-  
-    .rightContent{
+
+    .rightContent {
       margin-right: 10%;
       width: 50%;
       max-width: 50%;
       display: flex;
       flex-direction: column;
       gap: 2rem;
-      
-      .registerTransaction{
+
+      .registerTransaction {
         height: 50%;
       }
 
-      .graphics{
+      .graphics {
         border: 2px;
         border-style: groove;
         border-color: var(--orga-green);
         height: 50%;
       }
     }
-        @media(max-width: 720px){
-        align-items: center;
-        flex-direction: column;
-        height: 100%;
-        margin-top: 20%;
-        .leftContent{
-          margin-left: 0px;
-        }
-        .rightContent{
-          margin-right: 0px;
-        }
-
+    @media (max-width: 720px) {
+      align-items: center;
+      flex-direction: column;
+      height: 100%;
+      margin-top: 20%;
+      .leftContent {
+        margin-left: 0px;
       }
+      .rightContent {
+        margin-right: 0px;
+      }
+    }
   }
 }

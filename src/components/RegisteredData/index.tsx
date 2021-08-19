@@ -74,19 +74,21 @@ export default function RegisteredData() {
                 currency: "BRL",
               }).format(totalExit)}
             </span>
-          </label>         
+          </label>
         </div>
         <div className={styles.total}>
-            <label>
-              TOTAL:{" "}
-              <span className={totalFinal >= 0 ? styles.deposit : styles.withdraw}>
-                {new Intl.NumberFormat("pt-BR", {
-                  style: "currency",
-                  currency: "BRL",
-                }).format(totalFinal)}
-              </span>
-            </label>
-          </div>
+          <label>
+            TOTAL:{" "}
+            <span
+              className={totalFinal >= 0 ? styles.deposit : styles.withdraw}
+            >
+              {new Intl.NumberFormat("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+              }).format(totalFinal)}
+            </span>
+          </label>
+        </div>
       </footer>
     </div>
   );

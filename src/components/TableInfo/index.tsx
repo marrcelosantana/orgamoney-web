@@ -14,7 +14,7 @@ export default function TableInfo() {
         params: { idIncome, nameMonth: month },
         headers: { Authorization: JSON.parse(authorization) },
       });
-      handleSetMonth(month);
+      handleSetReload();
     } catch (err) {
       toast.error("Não foi possível deletar, tente novamente!");
       console.log(err);
@@ -61,8 +61,11 @@ export default function TableInfo() {
                 }).format(income.value)}
               </td>
               <td>
-                <AiFillEdit className={styles.icons} />
-                <AiFillDelete   
+                <AiFillEdit
+                  className={styles.icons}
+                  style={{ display: "none" }}
+                />
+                <AiFillDelete
                   className={styles.icons}
                   onClick={() => handleDeleteDataIncome(income.id)}
                 />
@@ -83,7 +86,10 @@ export default function TableInfo() {
                 }).format(bill.value)}
               </td>
               <td>
-                <AiFillEdit className={styles.icons}/>
+                <AiFillEdit
+                  className={styles.icons}
+                  style={{ display: "none" }}
+                />
                 <AiFillDelete
                   className={styles.icons}
                   onClick={() => handleDeleteDataBill(bill.id)}

@@ -12,7 +12,6 @@ import User from "../../models/user";
 import { useUserContext } from "../../contexts/UserContext";
 import Category from "../../models/category";
 import Cookies from "js-cookie";
-import { useContext } from "react";
 import { RiAddCircleFill } from "react-icons/ri";
 
 export default function RegisterTransaction() {
