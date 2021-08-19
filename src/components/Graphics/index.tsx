@@ -69,6 +69,7 @@ export default function Graphics() {
           data={data}
           options={options}
           width={"100%"}
+          height={"23vh"}
         />
       </div>
     </div>
