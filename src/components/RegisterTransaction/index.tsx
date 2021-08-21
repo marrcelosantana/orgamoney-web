@@ -92,7 +92,7 @@ export default function RegisterTransaction() {
   }
 
   async function update(e: FormEvent) {
-    // registrar uma renda/compra.
+    // editar uma renda/compra.
     e.preventDefault();
     const data = { name, value, idCategory, date, idMonth: month };
     try {
