@@ -11,11 +11,29 @@ export default function Graphics() {
     title: "Gráfico Mensal",
   });
   const header = [["Categoria", "Valor"]];
-  const [data, setData] = useState(header);
+  const [data, setData] = useState(["", 0]);
+  const [data2, setData2] = useState(["", 0]);
 
   class Recip {
     name: string;
     value: number;
+  }
+
+  function orderByCategory(array: Recip[]) {
+    let newArray = [new Recip()];
+    array.forEach((item) => {
+      let tem = false;
+      newArray.forEach((itemInNewArray) => {
+        if (itemInNewArray.name === item.name) {
+          itemInNewArray.value += item.value;
+          tem = true;
+        }
+      });
+      if (!tem) {
+        newArray.push(item);
+      }
+    });
+    return newArray;
   }
 
   function handleData() {
@@ -32,24 +50,16 @@ export default function Graphics() {
         recip.value = income.value;
         return recip;
       });
-      const billsAndIncomes = bills.concat(income);
-      let recips = [new Recip()];
-      billsAndIncomes.forEach((billOrIncome) => {
-        let tem = false;
-        recips.forEach((recip) => {
-          if (recip.name === billOrIncome.name) {
-            recip.value += billOrIncome.value;
-            tem = true;
-          }
-        });
-        if (!tem) {
-          recips.push(billOrIncome);
-        }
+      const filteredBills = orderByCategory(bills);
+      const filteredIncome = orderByCategory(income);
+      let aux = filteredBills.map((item) => {
+        return [item.name, item.value];
       });
-      const filteredRecips = recips.map((recip) => {
-        return [recip.name, recip.value];
+      setData(aux);
+      aux = filteredIncome.map((item) => {
+        return [item.name, item.value];
       });
-      setData(header.concat(filteredRecips));
+      setData2(aux);
     }
   }
 
@@ -66,7 +76,7 @@ export default function Graphics() {
         <Chart
           className={styles.graphic}
           chartType="PieChart"
-          data={data}
+          data={header.concat(data)}
           options={options}
           width={"100%"}
           height={"23vh"}
