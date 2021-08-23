@@ -26,7 +26,9 @@
       gap: 2rem;
 
       .registerTransaction {
-        height: 50%;
+        border: 2px;
+        border-style: groove;
+        border-color: var(--orga-green);
       }
 
       .graphics {
