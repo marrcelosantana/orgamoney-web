@@ -11,8 +11,8 @@ export default function Graphics() {
     title: "Gráfico Mensal",
   });
   const header = [["Categoria", "Valor"]];
-  const [data, setData] = useState(["", 0]);
-  const [data2, setData2] = useState(["", 0]);
+  const [data, setData] = useState<(string | number)[][]>();
+  const [data2, setData2] = useState<(string | number)[][]>();
 
   class Recip {
     name: string;
@@ -55,11 +55,11 @@ export default function Graphics() {
       let aux = filteredBills.map((item) => {
         return [item.name, item.value];
       });
-      setData(aux);
+      setData(header.concat(aux));
       aux = filteredIncome.map((item) => {
         return [item.name, item.value];
       });
-      setData2(aux);
+      setData2(header.concat(aux));
     }
   }
 
@@ -76,7 +76,15 @@ export default function Graphics() {
         <Chart
           className={styles.graphic}
           chartType="PieChart"
-          data={header.concat(data)}
+          data={data}
+          options={options}
+          width={"100%"}
+          height={"23vh"}
+        />
+        <Chart
+          className={styles.graphic}
+          chartType="PieChart"
+          data={data2}
           options={options}
           width={"100%"}
           height={"23vh"}
