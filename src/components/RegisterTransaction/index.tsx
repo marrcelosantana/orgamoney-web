@@ -41,14 +41,14 @@ export default function RegisterTransaction() {
     setCategories(user.categories);
   }
 
-  function clear(){
-    setName('');
-    setValue(0);
-    setDate('');
-    setCategory('');
-    setTypePayment('');
-    setNameCategory('');
-  }
+  // function clear(){
+  //   setName('');
+  //   setValue(0);
+  //   setDate('');
+  //   setCategory('');
+  //   setTypePayment('');
+  //   setNameCategory('');
+  // }
   
   async function registerCategory() {
     try {
@@ -94,7 +94,7 @@ export default function RegisterTransaction() {
       toast.success("Transação cadastrada com sucesso! 🤑", {
         duration: 6000,
       });
-      clear();
+      // clear();
     } catch (err) {
       toast.error("Erro ao cadastrar transação, tente novamente! 😓", {
         duration: 6000,
