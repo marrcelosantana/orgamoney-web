@@ -32,6 +32,7 @@ export default function RegisterTransaction() {
     getDataCategory();
   }, [categoryCreate]);
 
+
   async function getDataCategory() {
     const response = await api.get("/user", {
       headers: { Authorization: JSON.parse(idUser) },
@@ -40,6 +41,15 @@ export default function RegisterTransaction() {
     setCategories(user.categories);
   }
 
+  function clear(){
+    setName('');
+    setValue(0);
+    setDate('');
+    setCategory('');
+    setTypePayment('');
+    setNameCategory('');
+  }
+  
   async function registerCategory() {
     try {
       if (!nameCategory.trim()) {
@@ -84,6 +94,7 @@ export default function RegisterTransaction() {
       toast.success("Transação cadastrada com sucesso! 🤑", {
         duration: 6000,
       });
+      clear();
     } catch (err) {
       toast.error("Erro ao cadastrar transação, tente novamente! 😓", {
         duration: 6000,
